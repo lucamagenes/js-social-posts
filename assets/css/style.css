@@ -7,3 +7,11 @@
 body {
     background-color: #023047;
 }
+
+#post img {
+    background-size: contain;
+}
+
+#likeButton {
+    cursor: pointer;
+}
