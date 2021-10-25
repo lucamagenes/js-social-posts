@@ -14,4 +14,14 @@ body {
 
 #likeButton {
     cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+}
+
+#likeButton:hover {
+    background-color: rgb(238, 238, 238);
+}
+
+.likeButton.liked {
+    color: rgb(0, 201, 0);
 }

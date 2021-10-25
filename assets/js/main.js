@@ -14,7 +14,7 @@ const posts = [
         dataPost: '4 mesi fa',
         contenuto: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Aliquid omnis mollitia consequatur neque ea nobis molestiae cupiditate fugiat numquam atque.',
         immagine: 'https://unsplash.it/300/300?image=',
-        numeroLikes: '80'
+        numeroLikes: 10
     },
     {
         id: 'Sofia Perlari',
@@ -23,7 +23,7 @@ const posts = [
         dataPost: '4 mesi fa',
         contenuto: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Aliquid omnis mollitia consequatur neque ea nobis molestiae cupiditate fugiat numquam atque.',
         immagine: 'https://unsplash.it/300/300?image=',
-        numeroLikes: '80'
+        numeroLikes: 20
     },
     {
         id: 'John Green',
@@ -32,7 +32,7 @@ const posts = [
         dataPost: '4 mesi fa',
         contenuto: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.Aliquid omnis mollitia consequatur neque ea nobis molestiae cupiditate fugiat numquam atque.',
         immagine: 'https://unsplash.it/300/300?image=',
-        numeroLikes: '80'
+        numeroLikes: 30
     }
 ]
 
@@ -73,11 +73,13 @@ function renderPost(userPost) {
 
         <div id="likeSection" class="d-flex justify-content-around
             align-items-center lh">
-            <p id="likeButton" class="">
+            <p id="likeButton" class="likeButton">
                 <i class="fas fa-thumbs-up"></i>
                 Mi Piace
             </p>
-            <p id="numeroLikes">Piace a 80 persone</p>
+            <p id="numeroLikes">
+            Piace a <b class= "likes-counter">${userPost.numeroLikes}</b> persone
+            </p>
         </div>
 
     </div>
@@ -90,10 +92,27 @@ function renderPostPage(posts) {
 
     for (let i = 0; i < posts.length; i++) {
         const userPost = posts[i];
-        console.log(userPost);
 
         document.querySelector('main').insertAdjacentHTML('beforeend', renderPost(userPost))
 
     }
 
+}
+
+const likeButtons = document.getElementsByClassName('likeButton');
+for (let i = 0; i < likeButtons.length; i++) {
+    const likeButton = likeButtons[i];
+
+    likeButton.addEventListener('click', pressLike)
+
+}
+
+let numeroLikes = document.getElementsByClassName('likes-counter');
+
+function pressLike() {
+    if (this.classList.contains('liked')) {
+        return;
+    }
+
+    this.classList.add('liked');
 }
