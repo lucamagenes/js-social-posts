@@ -107,12 +107,27 @@ for (let i = 0; i < likeButtons.length; i++) {
 
 }
 
-let numeroLikes = document.getElementsByClassName('likes-counter');
+const postNumeroLikes = document.getElementsByClassName('likes-counter');
+function detectLikes() {
+    for (let i = 0; i < postNumeroLikes.length; i++) {
+        const numeroLikes = postNumeroLikes[i];
+        console.log(numeroLikes);
+
+        const numeroLike = parseInt(numeroLikes.innerText)
+        console.log(numeroLike);
+    }
+    return numeroLike = parseInt(numeroLikes.innerText)
+}
 
 function pressLike() {
     if (this.classList.contains('liked')) {
+        this.classList.remove('liked');
         return;
     }
 
     this.classList.add('liked');
+
+    detectLikes();
+    numeroLike.innerHTML = parseInt(numeroLike.innerHTML) + 1;
+
 }
